@@ -36,7 +36,6 @@ class CrusherContainer(windowId: Int, playerInv: PlayerInventory, val tile: Crus
     override fun canInteractWith(playerIn: PlayerEntity): Boolean = isWithinUsableDistance(canInteractWithCallable, playerIn, ModBlocks.CRUSHER)
     
     
-    
     companion object {
         private fun getTileEntity(playerInv: PlayerInventory, data: PacketBuffer): CrusherTileEntity {
             val tileAtPos = playerInv.player.world.getTileEntity(data.readBlockPos())
