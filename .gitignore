@@ -6,3 +6,4 @@
 /gradle/*
 /run/usercache.json
 /run/usernamecache.json
+/.idea/runConfigurations/*
