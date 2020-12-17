@@ -19,13 +19,12 @@ package com.archecraft.games.minecraft.mods
 
 import com.archecraft.games.minecraft.mods.data.DataGenerators
 import com.archecraft.games.minecraft.mods.setup.Registration
-import net.minecraftforge.fml.ModList
+import net.minecraft.util.ResourceLocation
 import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent
-import net.minecraftforge.fml.event.server.FMLServerAboutToStartEvent
-import org.apache.logging.log4j.*
-import org.objectweb.asm.Type
-import thedarkcolour.kotlinforforge.forge.FORGE_BUS
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent
+import org.apache.logging.log4j.LogManager
+import org.apache.logging.log4j.Logger
 import thedarkcolour.kotlinforforge.forge.MOD_BUS
 
 @Mod(ArchesMod.ID)
@@ -37,16 +36,20 @@ object ArchesMod {
     init {
         Registration.register()
         
-        MOD_BUS.addListener(ArchesMod::onClientSetup)
+        MOD_BUS.addListener(ArchesMod::clientSetup)
+        MOD_BUS.addListener(ArchesMod::commonSetup)
+        
         MOD_BUS.addListener(DataGenerators::gatherData)
-        FORGE_BUS.addListener(ArchesMod::onServerAboutToStart)
     }
     
-    private fun onClientSetup(event: FMLClientSetupEvent) {
-        LOGGER.log(Level.INFO, "Initializing client...")
+    private fun commonSetup(event: FMLCommonSetupEvent) {
+    
     }
     
-    private fun onServerAboutToStart(event: FMLServerAboutToStartEvent) {
-        LOGGER.log(Level.INFO, "Server starting...")
+    private fun clientSetup(event: FMLClientSetupEvent) {
+    
     }
+    
+    
+    fun rl(name: String) = ResourceLocation(ID, name)
 }

@@ -18,8 +18,30 @@
 package com.archecraft.games.minecraft.mods.tileentities
 
 import com.archecraft.games.minecraft.mods.setup.ModTileEntities
+import net.minecraft.block.BlockState
+import net.minecraft.nbt.CompoundNBT
+import net.minecraft.network.NetworkManager
+import net.minecraft.network.play.server.SUpdateTileEntityPacket
 import net.minecraft.tileentity.TileEntity
 
 class CrusherTileEntity : TileEntity(ModTileEntities.CRUSHER) {
-
+    override fun getUpdateTag(): CompoundNBT {
+        val nbt = CompoundNBT()
+        
+        return nbt
+    }
+    
+    override fun handleUpdateTag(state: BlockState, tag: CompoundNBT) {
+    
+    }
+    
+    override fun getUpdatePacket(): SUpdateTileEntityPacket {
+        val nbt = CompoundNBT()
+        
+        return SUpdateTileEntityPacket(getPos(), -1, nbt)
+    }
+    
+    override fun onDataPacket(net: NetworkManager, pkt: SUpdateTileEntityPacket) {
+        val nbt = pkt.nbtCompound
+    }
 }

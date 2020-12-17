@@ -15,21 +15,19 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.archecraft.games.minecraft.mods.setup
+package com.archecraft.games.minecraft.mods.jei
 
-import com.archecraft.games.minecraft.mods.recipes.CrusherRecipeSerializer
-import com.archecraft.games.minecraft.mods.recipes.ICrusherRecipe
-import net.minecraft.item.crafting.IRecipe
-import net.minecraft.item.crafting.IRecipeType
+import com.archecraft.games.minecraft.mods.ArchesMod
+import mezz.jei.api.IModPlugin
+import mezz.jei.api.JeiPlugin
+import mezz.jei.api.registration.IRecipeRegistration
 import net.minecraft.util.ResourceLocation
 
-object ModRecipeSerializers {
-    val CRUSHER_RECIPE_SERIALIZER = CrusherRecipeSerializer()
-    val CRUSHER_TYPE = register<ICrusherRecipe>(ICrusherRecipe.RECIPE_TYPE_ID)
-    val CRUSHER_SERIALIZER by Registration.RECIPE_SERIALIZERS.register("crusher") { CRUSHER_RECIPE_SERIALIZER }
+@JeiPlugin
+class JEIPlugin : IModPlugin {
+    override fun getPluginUid(): ResourceLocation = ResourceLocation(ArchesMod.ID, "jei")
     
-    fun register() {}
+    override fun registerRecipes(registration: IRecipeRegistration) {
     
-    
-    private fun <T : IRecipe<*>> register(id: ResourceLocation): IRecipeType<T> = IRecipeType.register(id.toString())
+    }
 }

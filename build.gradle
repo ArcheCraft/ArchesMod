@@ -4,6 +4,7 @@ buildscript {
         jcenter()
         mavenCentral()
     }
+
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.10"
@@ -19,7 +20,7 @@ archivesBaseName = 'archesmod'
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
 
 minecraft {
-    mappings channel: 'snapshot', version: '20200916-1.16.2'
+    mappings channel: 'snapshot', version: '20201028-1.16.3'
 
     // accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 
@@ -66,15 +67,48 @@ minecraft {
 
 repositories {
     maven {
-        name = 'Kotlin for Forge'
-        url = 'https://thedarkcolour.github.io/KotlinForForge/'
+        name 'Kotlin for Forge'
+        url 'https://thedarkcolour.github.io/KotlinForForge/'
+        content {
+            includeGroup 'thedarkcolour'
+        }
+    }
+    maven {
+        name 'prog'
+        url 'https://dvs1.progwml6.com/files/maven'
+        content {
+            includeGroup 'mezz.jei'
+        }
+    }
+    maven {
+        name 'HWYLA'
+        url "https://maven.tehnut.info"
+        content {
+            includeGroup 'mcp.mobius.waila'
+        }
+    }
+    maven {
+        name 'ModMaven'
+        url 'https://modmaven.dev'
+        content {
+            includeGroup 'mekanism'
+        }
     }
 }
 
 dependencies {
     minecraft 'net.minecraftforge:forge:1.16.3-34.1.22'
 
-    fg.deobf(implementation('thedarkcolour:kotlinforforge:1.6.2'))
+    compileOnly "mekanism:Mekanism:1.16.3-10.0.15.441:api"
+    fg.deobf runtimeOnly ("mekanism:Mekanism:1.16.3-10.0.15.441")
+
+    compileOnly "mezz.jei:jei-1.16.3:7.6.0.51:api"
+    fg.deobf runtimeOnly("mezz.jei:jei-1.16.3:7.6.0.51")
+
+    compileOnly "mcp.mobius.waila:Hwyla:1.10.11-B78_1.16.2:api"
+    fg.deobf runtimeOnly("mcp.mobius.waila:Hwyla:1.10.11-B78_1.16.2")
+
+    fg.deobf implementation('thedarkcolour:kotlinforforge:1.6.2')
 }
 
 compileKotlin {

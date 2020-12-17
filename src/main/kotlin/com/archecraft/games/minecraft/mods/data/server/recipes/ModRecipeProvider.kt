@@ -15,16 +15,26 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.archecraft.games.minecraft.mods.data.server
+package com.archecraft.games.minecraft.mods.data.server.recipes
 
 import com.archecraft.games.minecraft.mods.ArchesMod
 import com.archecraft.games.minecraft.mods.recipes.crusherRecipe
 import net.minecraft.data.*
 import net.minecraft.util.ResourceLocation
+import net.minecraftforge.common.crafting.ConditionalRecipe
+import net.minecraftforge.common.crafting.conditions.ModLoadedCondition
 import java.util.function.Consumer
 
 class ModRecipeProvider(generatorIn: DataGenerator) : RecipeProvider(generatorIn) {
     override fun registerRecipes(consumer: Consumer<IFinishedRecipe>) {
-        crusherRecipe(consumer, ResourceLocation(ArchesMod.ID, "test")) {  }
+        crusherRecipe(consumer, ArchesMod.rl("test")) {
+        
+        }
+        withConditional(consumer, ArchesMod.rl("conditional_test")) {
+            addCondition(ModLoadedCondition("archesmod"))
+            crusherRecipe(it, ArchesMod.rl("")) {
+            
+            }
+        }
     }
 }

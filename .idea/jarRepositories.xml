@@ -31,5 +31,25 @@
       <option name="name" value="maven" />
       <option name="url" value="https://files.minecraftforge.net/maven/" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven" />
+      <option name="name" value="maven" />
+      <option name="url" value="https://modmaven.dev/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="HWYLA" />
+      <option name="name" value="HWYLA" />
+      <option name="url" value="https://maven.tehnut.info" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="prog" />
+      <option name="name" value="prog" />
+      <option name="url" value="https://dvs1.progwml6.com/files/maven" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="ModMaven" />
+      <option name="name" value="ModMaven" />
+      <option name="url" value="https://modmaven.dev" />
+    </remote-repository>
   </component>
 </project>

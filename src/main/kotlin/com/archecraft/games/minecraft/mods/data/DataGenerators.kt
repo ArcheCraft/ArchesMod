@@ -20,6 +20,7 @@ package com.archecraft.games.minecraft.mods.data
 import com.archecraft.games.minecraft.mods.data.client.ModBlockStateProvider
 import com.archecraft.games.minecraft.mods.data.client.ModItemModelProvider
 import com.archecraft.games.minecraft.mods.data.server.*
+import com.archecraft.games.minecraft.mods.data.server.recipes.ModRecipeProvider
 import net.minecraftforge.fml.event.lifecycle.GatherDataEvent
 
 object DataGenerators {
